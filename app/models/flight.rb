@@ -11,4 +11,8 @@ class Flight < ApplicationRecord
 								 from, to, passenger_count)
 					.where(departing_time: date.all_day)
 	end
+
+	def format_departing_time
+		departing_time.localtime.strftime('%A, %-m/%-d/%Y %I:%M %p')
+	end
 end
