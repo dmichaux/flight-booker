@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  departing_time: 2018-04-18 14:15:05
+  duration: 1
+  available_seat_count: 1
+  from_airport_id: 1
+  to_airport_id: 1
+
+two:
+  departing_time: 2018-04-18 14:15:05
+  duration: 1
+  available_seat_count: 1
+  from_airport_id: 1
+  to_airport_id: 1
