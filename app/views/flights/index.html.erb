@@ -1,0 +1,43 @@
+<h1>Book a Flight</h1>
+
+<%= form_tag root_path, method: 'get' do %>
+	<%= label_tag   :from_airport_id, 'From' %>
+	<%= select_tag  :from_airport_id,
+								   options_from_collection_for_select(@airports, :id, :code),
+								   include_blank: true %>
+	<%= label_tag   :to_airport_id,	  'To' %>
+	<%= select_tag  :to_airport_id,
+								   options_from_collection_for_select(@airports, :id, :code),
+								   include_blank: true, %>
+	<%= label_tag	  :passenger_count, 'Passengers' %>
+	<%= select_tag  :passenger_count,
+									 options_for_select((1..4).map {|n| [n, n]}),
+									 include_blank: true %><br>
+	
+	<%= label_tag 	:date,						'Date' %>
+	<%= select_year  Date.today,
+									 start_year: Date.today.year, end_year: Date.today.year %>
+	<%= select_month 4 %>
+	<%= select_day	 Date.today %><br>
+
+	<%= submit_tag	:search %>
+<% end %>
+
+<% if @flights %>
+<br><hr>
+<p>Matching Flights:</p>
+	<%= form_tag new_booking_path, method: 'get' do %>
+		<%= hidden_field_tag :passenger_count, @passenger_count %>
+		<ul>
+			<% @flights.each do |flight| %>
+				<% flight_info = "#{flight.format_departing_time} - 
+												 from #{flight.from_airport.code} to #{flight.to_airport.code}" %>
+				<li>
+					<%= radio_button_tag :selected_flight, flight.id %>
+					<%= label_tag "selected_flight_#{flight.id}", flight_info %>
+				</li>
+			<% end %>
+		</ul>
+		<%= submit_tag 'Select Flight' %>
+	<% end %>
+<% end %>
