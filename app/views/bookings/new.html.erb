@@ -5,13 +5,7 @@
 	<%= f.hidden_field :flight_id, value: @booking.flight_id %>
 	
 	<p>Flight Information:
-		<ul>
-			<li>Flight Number: <%= @booking.flight_id %></li>
-			<li>
-				From: <%= @booking.flight.from_airport.code %> To: <%= @booking.flight.to_airport.code %>
-			</li>
-			<li>Flight Time: <%= @booking.flight.format_departing_time %></li>
-		</ul>
+		<%= render 'flight_info' %>
 	</P>
 	<p>Passengers: <%= @booking.passengers.size %></p>
 	<ul>

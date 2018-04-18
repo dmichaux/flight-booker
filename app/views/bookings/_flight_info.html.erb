@@ -1,0 +1,7 @@
+<ul>
+	<li>Flight Number: <%= @booking.flight_id %></li>
+	<li>
+		From: <%= @booking.flight.from_airport.code %> To: <%= @booking.flight.to_airport.code %>
+	</li>
+	<li>Flight Time: <%= @booking.flight.format_departing_time %></li>
+</ul>
