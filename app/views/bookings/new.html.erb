@@ -12,12 +12,12 @@
 		<%= f.fields_for :passengers do |passenger| %>
 			<li>
 			<%= passenger.label :name %>
-			<%= passenger.text_field :name %>
+			<%= passenger.text_field :name, class: 'form-control' %>
 			<%= passenger.label :age %>
-			<%= passenger.text_field :age %>
+			<%= passenger.text_field :age, class: 'form-control' %>
 			</li>
 		<% end %>
 	</ul>
 
-	<%= f.submit 'Book Flight' %>
+	<%= f.submit 'Book Flight', class: 'btn btn-primary' %>
 <% end %>

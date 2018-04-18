@@ -4,15 +4,18 @@
 	<%= label_tag   :from_airport_id, 'From' %>
 	<%= select_tag  :from_airport_id,
 								   options_from_collection_for_select(@airports, :id, :code),
-								   include_blank: true %>
+								   include_blank: true,
+								   class: 'form-control' %>
 	<%= label_tag   :to_airport_id,	  'To' %>
 	<%= select_tag  :to_airport_id,
 								   options_from_collection_for_select(@airports, :id, :code),
-								   include_blank: true, %>
+								   include_blank: true,
+								   class: 'form-control' %>
 	<%= label_tag	  :passenger_count, 'Passengers' %>
 	<%= select_tag  :passenger_count,
 									 options_for_select((1..4).map {|n| [n, n]}),
-									 include_blank: true %><br>
+									 include_blank: true,
+									 class: 'form-control' %><br>
 	
 	<%= label_tag 	:date,						'Date' %>
 	<%= select_year  Date.today,
@@ -20,7 +23,7 @@
 	<%= select_month 4 %>
 	<%= select_day	 Date.today %><br>
 
-	<%= submit_tag	:search %>
+	<%= submit_tag	:search, class: 'btn btn-primary' %>
 <% end %>
 
 <% if @flights %>
@@ -38,6 +41,6 @@
 				</li>
 			<% end %>
 		</ul>
-		<%= submit_tag 'Select Flight' %>
+		<%= submit_tag 'Select Flight', class: 'btn btn-primary' %>
 	<% end %>
 <% end %>
